@@ -79,4 +79,4 @@ We track tasks using issues and work on module branches. Each member should push
 
 ## AI assistance
 
-ChatGPT/Codex assisted with documentation, repository setup, demo-account fixes and isolated checks. The team needs to review and understand the assisted work and complete its own contribution and testing records.
+We used ChatGPT/Codex to assist with documentation, repository setup, demo-account fixes and selected checks.
