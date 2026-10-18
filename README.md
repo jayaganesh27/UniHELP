@@ -1,75 +1,82 @@
 # UniHELP
+### BIT216 Software Engineering Principles — Assignment 2
 
-Student Support and Volunteer Platform. BIT216 group project, Iteration 1.
+UniHELP is our student support and volunteer platform. Students can request help, browse volunteers and view scheduled support sessions.
 
-## Team responsibilities
+## Our team
 
-| Member | Use case | Iteration 1 scope |
-|---|---|---|
-| Jayaganesh A/L Palanisamy (Jaya) | UC1: Student and volunteer profiles | Registration, password/OTP login, personal profile and photo |
-| Mishalini S. Selvasegaran (Misha) | UC2: Requests and volunteers | Support requests, basic volunteer filter, incoming queue and basic acceptance |
-| Charmaine Jayarina Suresh Jayaseelan (Charm) | UC3: Support sessions | Scheduling and upcoming sessions for both participants |
+| Member | GitHub | Assigned module |
+| --- | --- | --- |
+| Jayaganesh A/L Palanisamy | @jayaganesh27 | UC1: Registration, OTP login and profile |
+| Mishalini S. Selvasegaran | @mishaliniselvasegaran06-star | UC2: Requests and volunteer features |
+| Charmaine Jayarina Suresh Jayaseelan | @charmseelan18-svg | UC3: Scheduling and upcoming sessions |
 
-Basic acceptance connects the requests and sessions modules. Volunteer roles and filter skills are preset for the Iteration 1 demonstration.
+## Iteration 1
 
-## Implemented scope
+- Register a student account.
+- Log in with a password and six-digit OTP.
+- Edit profile details and upload a profile photo.
+- Submit a support request with a category, description and preferred time.
+- Browse volunteers using a basic skill filter.
+- Accept a request and schedule a session as a volunteer.
+- View upcoming sessions as either participant.
 
-- Student registration with required-field, password and duplicate-account checks.
-- Password login followed by six-digit OTP verification.
-- View/edit name and contact number, with a profile photo upload handler.
-- Submit support requests with category, description and preferred date/time.
-- Browse volunteers with a basic skill filter.
-- Volunteer queue with manual acceptance and session scheduling.
-- Upcoming sessions for the student and volunteer.
+Volunteer roles and skills are preset for this demonstration. Automatic matching, editable skills, availability, rescheduling, cancellation and feedback are planned for later development.
 
-This copy excludes volunteer conversion, editable skills, weekly availability, automatic matching, rejection, request history, rescheduling, booked-session cancellation, completion and feedback.
+## Technologies
 
-## Stack
+PHP 8.2, MySQL/MariaDB, HTML, CSS and JavaScript. We run the prototype locally using XAMPP.
 
-PHP 8.2, PDO, MySQL/MariaDB, HTML, CSS and vanilla JavaScript. XAMPP provides the local Apache/PHP/database environment.
+## How to run
 
-## Run locally
+1. Put the project in `C:\xampp\htdocs\unihelp`. The `index.php` file should be directly inside this folder.
+2. Start **Apache** and **MySQL** in XAMPP.
+3. For a fresh setup, import `schema.sql` using phpMyAdmin. Do not reimport it over a database you want to keep.
+4. Check the database details in `config.php`. The default database is `unihelp`, username `root`, and a blank local password.
+5. Set `APP_URL` to `http://localhost/unihelp`.
+6. Open **http://localhost/unihelp/index.php**.
 
-1. Download/clone this repository into `C:\xampp\htdocs\unihelp`. Keep `index.php` directly inside that directory.
-2. Start Apache and MySQL in XAMPP.
-3. For a fresh database, import `schema.sql` in phpMyAdmin. It creates `unihelp` and the tables/demo records. Do not reimport over an existing database as an upgrade.
-4. Check `config.php`. Defaults use database `unihelp`, user `root`, an empty local database password, and `APP_URL` set to `http://localhost/unihelp`.
-5. Open `http://localhost/unihelp/index.php` in your browser.
+The uploads folder must be writable. Uploaded personal photos are excluded from Git.
 
-Use your actual local database settings. Uploaded profile images are excluded from Git. The application creates the uploads directory when needed, and it must be writable.
+## Demo accounts
 
-## Local demo accounts
-
-| Display name | Email used to log in | Role |
-|---|---|---|
+| Account | Email | Role |
+| --- | --- | --- |
 | Jaya | `jaya@university.edu` | Student |
 | Misha | `misha@university.edu` | Volunteer |
 | Charm | `charm@university.edu` | Volunteer |
 
-Local demonstration password: `UniHelp123!`. These are example accounts and example email addresses, not verified inboxes. This repository schema includes the repaired demo hashes and team names. Importing it does not update an already-existing database.
+**Local demo password:** `UniHelp123!`
 
-The additional Marcus and Wei Ming demo fixtures remain for browsing/request examples. Their seed password is also the local demonstration password.
+These are example accounts, not real email inboxes. The schema contains the corrected demo passwords; it does not update an existing database automatically. Additional Marcus and Wei Ming accounts are included as sample data.
 
-## OTP and images
+## OTP in the local demo
 
-The mail helper uses PHP `mail()`. XAMPP needs a configured mail transport for delivery. `SHOW_OTP_IF_EMAIL_FAILS` enables the on-screen **Demo code** when sending fails. The demo emails above do not establish real email delivery. Explain the fallback during a local demonstration.
+The app uses PHP `mail()`. Email delivery needs a configured mail service and has not yet been verified. If sending fails, `SHOW_OTP_IF_EMAIL_FAILS` allows a **Demo code** to appear on screen.
 
-Default avatar fallback and fonts use external services, so appearance can depend on internet access.
+Use the current code from the verification page. Create a new request with a future date for the presentation because the seeded requests contain example dates.
 
-## Verification and known limits
+## Testing progress
 
-All 12 PHP source files passed syntax checks. Twelve targeted runtime checks passed in an isolated PHP CLI/SQLite copy, covering profile updates, scoped actions, request creation/browsing, manual acceptance and both upcoming-session views. A MySQL-specific aggregate was adapted only in that disposable test copy.
+- All 12 PHP files passed local syntax checks.
+- Twelve isolated smoke checks passed for selected request, profile and session paths.
+- Those smoke checks used a disposable SQLite copy with a MySQL query adapted for the test.
+- Full browser/MySQL testing, email delivery, profile photo uploads and Selenium execution still need recorded results.
 
-Those checks do not establish complete browser/MySQL acceptance, actual email delivery, profile upload behaviour or Selenium execution. Record actual outcomes and screenshots in the group testing workbook before claiming completion. Scheduling dates should be in the future. The earlier seed request dates are example historical values, so create a new request for the presentation.
+Fonts and default avatars use external services, so their appearance may depend on internet access.
 
-## Presentation demonstration
+## Team workflow
 
-Register/login as a student, verify the OTP, edit the profile, submit a future-dated request, browse/filter volunteers, then log in as a preset volunteer in a separate browser session. Accept and schedule the request. Show the same upcoming session in both accounts.
+| Task | Branch | Issue |
+| --- | --- | --- |
+| Account and profile checks | `jaya/auth-profile` | [#1](https://github.com/jayaganesh27/UniHELP/issues/1) |
+| Requests and volunteer checks | `misha/requests-volunteers` | [#2](https://github.com/jayaganesh27/UniHELP/issues/2) |
+| Scheduling and session checks | `charm/sessions` | [#3](https://github.com/jayaganesh27/UniHELP/issues/3) |
 
-## Git collaboration
+We track tasks using issues and work on module branches. Each member should push their own changes and ask another member to review the pull request before merging.
 
-This initial import combines the group's existing Iteration 1 source. It does not establish individual authorship or earlier collaboration history. Each member should make real changes under their own account, use a feature branch, open a pull request, and have another member review the actual change. Do not create artificial commits or backdate work for assessment evidence.
+[PR #6](https://github.com/jayaganesh27/UniHELP/pull/6) adds our contribution guide, templates and PHP syntax check. Its automated check passed; review and merging were pending when this README was updated. The initial commit uploaded the existing prototype together.
 
-Suggested branch names are `jaya/auth-profile`, `misha/requests-volunteers` and `charm/sessions`. These are workflow suggestions, not claims that branches or reviews already exist.
+## AI assistance
 
-AI assistance: ChatGPT helped prepare the repository packaging, documentation, demo-account repairs and isolated checks. Group review and individual contribution evidence remain the responsibility of the members.
+ChatGPT/Codex assisted with documentation, repository setup, demo-account fixes and isolated checks. The team needs to review and understand the assisted work and complete its own contribution and testing records.
