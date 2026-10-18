@@ -1,0 +1,22 @@
+# Local secrets and overrides
+.env
+.env.*
+!.env.example
+config.local.php
+
+# Uploaded user files
+/uploads/*
+!/uploads/.gitkeep
+
+# Runtime files, database dumps, archives and editor files
+*.log
+sess_*
+*.sqlite
+*.zip
+*.bak
+*.sql.bak
+/backups/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
