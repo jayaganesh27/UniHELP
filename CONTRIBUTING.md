@@ -1,18 +1,18 @@
-# Contributing to UniHELP
+# Working on UniHELP
 
-## Team and scope
+## Our branches
 
-| Member | GitHub | Iteration 1 responsibility | Branch | Issue |
-| --- | --- | --- | --- | --- |
-| Jaya | @jayaganesh27 | UC1 registration, OTP login, profile | `jaya/auth-profile` | #1 |
-| Mishalini | @mishaliniselvasegaran06-star | UC2 requests, volunteer filtering, acceptance | `misha/requests-volunteers` | #2 |
-| Charmaine | @charmseelan18-svg | UC3 scheduling and upcoming sessions | `charm/sessions` | #3 |
+| Member | Branch | Task |
+| --- | --- | --- |
+| Jaya (@jayaganesh27) | `jaya/auth-profile` | Account and profile — #1 |
+| Misha (@mishaliniselvasegaran06-star) | `misha/requests-volunteers` | Requests and volunteers — #2 |
+| Charm (@charmseelan18-svg) | `charm/sessions` | Scheduling and sessions — #3 |
 
-The owner must invite both teammates through Settings > Collaborators. They must accept before pushing. Confirm lecturer access separately. The workflow setup is tracked in #4 and access/evidence in #5.
+Accept the repository invitation before pushing. The owner also needs to confirm lecturer access. Access tasks are tracked in #5.
 
-## Work from your own account
+## Getting started
 
-Clone once into your own working folder. Do not overwrite a running XAMPP copy or its database.
+Clone into a separate working folder so you do not overwrite your running XAMPP copy.
 
 ```sh
 git clone https://github.com/jayaganesh27/UniHELP.git
@@ -21,24 +21,32 @@ git fetch origin
 git switch --track origin/jaya/auth-profile
 ```
 
-Misha and Charm replace the last branch with their branch from the table. If a local branch already exists, use `git switch branch-name` instead. Check `git status` before changing branches. Commit your current work before synchronising; do not discard uncommitted changes.
+Use your branch from the table in the last command. If the local branch already exists, use `git switch branch-name`.
 
-Read the linked issue, reproduce the behaviour on XAMPP, and make a focused fix or a useful test/documentation contribution based on actual results. Record the environment, tester, date, steps, expected result and observed result. Commit only files you reviewed:
+## Making a change
+
+1. Read your issue and check the behaviour on XAMPP.
+2. Make a focused change.
+3. Test it and record the steps, expected result, actual result, date and tester.
+4. Check the diff and commit the files you changed.
 
 ```sh
+git status
 git diff
 git add path/to/changed-file.php
-git commit -m "Fix specific observed behaviour"
+git commit -m "Describe the change"
 git push -u origin HEAD
 ```
 
-Use your own Git identity and explain the actual change in the commit message. Do not share credentials, commit uploaded personal photos, or include real database exports. The seeded accounts are local demonstration fixtures.
+Replace the example path and commit message. Use your own account. Keep passwords, personal photos and private database records out of commits.
 
-## Pull requests and reviews
+## Reviewing and merging
 
-Open a pull request targeting `main`. Link its issue, explain the change, and list only tests actually executed. PHP syntax CI does not test database behaviour, email delivery or browser flows. Ask a different teammate to review the diff and evidence. That person should leave substantive feedback or approve after checking it; authors cannot provide their own peer approval. Resolve feedback and rerun affected checks before merging. Merge after the check passes and the peer review is complete. This is the team policy; verify repository settings separately before describing it as enforced protection.
+Open a pull request to `main`, link the issue, and explain what changed and how you tested it. Ask another teammate to review the code and results. Respond to their feedback and rerun affected tests.
 
-After merging, synchronise each local clone:
+Our team should merge after the syntax check passes and the peer review is complete. This is a working agreement; it is not currently enforced by branch protection. The syntax check checks PHP syntax only. Database, email and browser features need separate testing.
+
+After merging, update your local copy:
 
 ```sh
 git switch main
@@ -47,8 +55,12 @@ git switch your-feature-branch
 git merge main
 ```
 
-Push the feature branch if it changed. If a conflict occurs, inspect both versions, agree the intended behaviour, edit the affected files, test, then commit the resolution. Document the actual files and decision in the PR. If no conflict occurs, record that accurately; do not manufacture one for assessment.
+Replace `your-feature-branch` with your branch. Check `git status` first and commit unfinished work before switching. Push your feature branch if it changed.
 
-## Assessment evidence
+If a merge conflict happens, compare both versions, discuss the intended result, fix the file and test again. Explain the resolution in the PR. If no conflict happens, say so.
 
-Use real links to issues, commits, reviews, checks and merge commits. Close an issue only when its acceptance criteria are met. The initial source import does not establish individual authorship or historical continuous development. See [the evidence checklist](docs/git-evidence.md). AI assistance must be reviewed and understood by the member submitting the work.
+## Keeping records
+
+Update your issue as work progresses and close it when its acceptance criteria are met. Keep links to your commits, tests, reviews and merged PRs for the presentation. See [our evidence checklist](docs/git-evidence.md).
+
+The initial import uploaded the existing prototype together. Each member still needs to explain their own contributions. Review and understand AI-assisted changes and acknowledge the assistance used.
